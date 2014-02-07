@@ -131,7 +131,7 @@ ln -s tophat_out_1/accepted_hits.bam tophat_all/ERR127302.bam
 ln -s tophat_out_1/accepted_hits.bam.bai tophat_all/ERR127302.bam.bai
 \end{verbatim}
 
-The pathway analysis workflow is implemented all in R/Bioconductor. You need to install the relevant packages within R if you haven't done so, you will need to work with \textbf{R 3.0 and Bioconductor 2.13 or newer versions}. Note that \Rpackage{gageData} provides the demo RNA-Seq data and ready-to-use KEGG and GO gene set data. The installation may take a few minutes. From this  point on, we are working fully under R excpet noted otherwise. Of coiurse, you need to start R first. 
+The pathway analysis workflow is implemented all in R/Bioconductor. You need to install the relevant packages within R if you haven't done so, you will need to work with \textbf{R 3.0 and Bioconductor 2.13 or newer versions}. Note that \Rpackage{gageData} provides the demo RNA-Seq data and ready-to-use KEGG and GO gene set data. The installation may take a few minutes. From this  point on, we are working fully under R excpet noted otherwise. Of course, you need to start R first. 
 
 <<start, echo=FALSE>>=
 options(width=80)
@@ -377,9 +377,9 @@ fc.kegg.p <- gage(exp.fc, gsets = kegg.gs, ref = NULL, samp = NULL)
 sel <- fc.kegg.p$greater[, "q.val"] < 0.1 &
         !is.na(fc.kegg.p$greater[, "q.val"])
 path.ids <- rownames(fc.kegg.p$greater)[sel]
-sel.l <- cnts.kegg.p$less[, "q.val"] < 0.1 &
-           !is.na(cnts.kegg.p$less[,"q.val"])
-path.ids.l <- rownames(cnts.kegg.p$less)[sel.l]
+sel.l <- fc.kegg.p$less[, "q.val"] < 0.1 &
+           !is.na(fc.kegg.p$less[,"q.val"])
+path.ids.l <- rownames(fc.kegg.p$less)[sel.l]
 path.ids2 <- substr(c(path.ids, path.ids.l), 1, 8)
 require(pathview)
 #view first 3 pathways as demo
