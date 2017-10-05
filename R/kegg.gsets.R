@@ -1,10 +1,12 @@
 kegg.gsets<-function(species="hsa", id.type="kegg"){
   id.type=tolower(id.type)
+  egid=NA
   use.egid=FALSE
   if(species!="ko") {
     species.data=kegg.species.code(species, na.rm=T, code.only=F)
     species=species.data[1]
     use.egid=species.data[2]=="1"
+    egid=species.data[4]
   } else if(id.type!="kegg"){
     id.type="kegg"
   }
@@ -12,7 +14,7 @@ kegg.gsets<-function(species="hsa", id.type="kegg"){
   path.list <- keggLink("pathway",species)
   genes=gsub(paste(species,":",sep=""), "", names(path.list))
 
-  if(id.type=="entrez" & !use.egid &!is.na(species.data[4])){
+  if(id.type=="entrez" & !use.egid & !is.na(egid)){
     gid.map=keggConv("ncbi-geneid",species)
     kegg.ids=gsub(paste(species, ":", sep=""), "", names(gid.map))
     eg.ids=gsub("ncbi-geneid:", "", gid.map)
