@@ -1,3 +1,10 @@
+VERSION 2.28.1
+-------------
+  
+  o korg now include 5245 KEGG species. In addition an updated version
+    of korg is now checked out from Pathview Web server by loading
+    .rda file inst4ead of read .tsv file.
+
 VERSION 2.27.3/2.26.3
 -------------
   

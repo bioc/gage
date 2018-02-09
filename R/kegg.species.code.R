@@ -2,11 +2,8 @@ kegg.species.code <-
 function(species="hsa", na.rm=FALSE, code.only=TRUE){
       nspec=length(species)
       if(!exists("korg")){
-        korg=try(read.delim(file="https://pathview.uncc.edu/data/korg.tsv", sep="\t"))
-        if(class(korg)=="data.frame"){
-          korg$ncbi.geneid=as.character(korg$ncbi.geneid)
-          korg=as.matrix(korg)
-        } else data(korg, package="gage")
+        si=try(load(url("https://pathview.uncc.edu/data/korg.rda")))
+        if(class(si)=="try-error") data(korg, package="gage")
       }
 
       ridx=match(species, korg[,1:5]) %% nrow(korg)

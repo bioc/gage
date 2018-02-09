@@ -29,9 +29,8 @@ kegg.gsets<-function(species="hsa", id.type="kegg"){
   kg.sets=split(genes, paths)
 
   if(!exists("khier")){
-    khier=try(read.delim(file="https://pathview.uncc.edu/data/khier.tsv", sep="\t"))
-    if(class(khier)=="data.frame") khier=as.matrix(khier)
-    else data(khier, package="gage")
+        si=try(load(url("https://pathview.uncc.edu/data/khier.rda")))
+        if(class(si)=="try-error") data(khier, package="gage")
   }
 
   kh.idx=match(names(kg.sets), substr(khier[,3], 1,5))
