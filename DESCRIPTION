@@ -1,7 +1,7 @@
 Package: gage
 Type: Package
 Title: Generally Applicable Gene-set Enrichment for Pathway Analysis
-Version: 2.29.1
+Version: 2.28.1
 Date: 2018-02-09
 Author: Weijun Luo
 Maintainer: Weijun Luo <luo_weijun@yahoo.com>
