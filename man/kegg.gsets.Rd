@@ -8,7 +8,7 @@
   KEGG species.
 }
 \usage{
-kegg.gsets(species = "hsa", id.type = "kegg")
+kegg.gsets(species = "hsa", id.type = "kegg", check.new=FALSE)
 }
 \arguments{
   \item{species}{
@@ -25,6 +25,12 @@ kegg.gsets(species = "hsa", id.type = "kegg")
     for many common model organisms, like human, mouse, rat etc, hence these
     two options have the same effect. For other species, primary KEGG gene
     ID is not  Entrez Gene. 
+  }
+  \item{check.new}{
+    logical, whether to check for any newly added reference pathways
+    online. Default to FALSE. Because such online checking takes time
+    and new reference pathways are rarely added, it is usually not
+    suggested to set this argument TRUE, unless this is really needed.
   }
 }
 \details{

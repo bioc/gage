@@ -1,4 +1,4 @@
-kegg.gsets<-function(species="hsa", id.type="kegg"){
+kegg.gsets<-function(species="hsa", id.type="kegg", check.new=FALSE){
   id.type=tolower(id.type)
   egid=NA
   use.egid=FALSE
@@ -29,8 +29,10 @@ kegg.gsets<-function(species="hsa", id.type="kegg"){
   kg.sets=split(genes, paths)
 
   if(!exists("khier")){
-        si=try(load(url("https://pathview.uncc.edu/data/khier.rda")))
-        if(class(si)=="try-error") data(khier, package="gage")
+    if(check.new){
+      si=try(load(url("https://pathview.uncc.edu/data/khier.rda")))
+      if(class(si)=="try-error") data(khier, package="gage")
+    } else data(khier, package="gage")
   }
 
   kh.idx=match(names(kg.sets), substr(khier[,3], 1,5))
