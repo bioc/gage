@@ -102,8 +102,9 @@ Two options:
 
 Either install with Bioconductor installation script \verb@biocLite@ directly:
 <<install, echo=TRUE, eval=FALSE>>=
-source("http://bioconductor.org/biocLite.R")
-biocLite(c("gage","gageData"))
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install(c("gage","gageData"))
 @ 
 
 Or install without using Bioconductor:

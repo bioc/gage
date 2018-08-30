@@ -18,8 +18,9 @@ go.gsets <-  function (species = "human", pkg.name = NULL, id.type="eg", keep.ev
 
     pkg.on = require(pkg.name, character.only = TRUE)
     if (!pkg.on) {
-      source("http://bioconductor.org/biocLite.R")
-      biocLite(pkg.name, suppressUpdates =TRUE)
+      if (!requireNamespace("BiocManager", quietly=TRUE))
+          install.packages("BiocManager")
+      BiocManager::install(pkg.name, suppressUpdates =TRUE)
       pkg.on = require(pkg.name, character.only = TRUE)
       if (!pkg.on)
         stop(paste("Fail to install/load gene annotation package ",

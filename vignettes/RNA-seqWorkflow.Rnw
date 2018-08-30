@@ -57,8 +57,9 @@ This is the concise version, please check the full version workflow below for de
 
 <<synopsis0, echo=TRUE,  eval=FALSE>>=
 ##step 0: setup (also need to map the reads outside R)
-source("http://bioconductor.org/biocLite.R")
-biocLite(c("pathview", "gage", "gageData", "GenomicAlignments",
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install(c("pathview", "gage", "gageData", "GenomicAlignments",
             "TxDb.Hsapiens.UCSC.hg19.knownGene"))
 @ 
 
@@ -146,8 +147,9 @@ options(width=80)
 @ 
 
 <<install, echo=TRUE, eval=FALSE>>=
-source("http://bioconductor.org/biocLite.R")
-biocLite(c("pathview", "gage", "gageData", "GenomicAlignments",
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install(c("pathview", "gage", "gageData", "GenomicAlignments",
             "TxDb.Hsapiens.UCSC.hg19.knownGene"))
 @ 
 
