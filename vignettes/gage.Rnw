@@ -100,7 +100,7 @@ End R: type in \verb@q()@ when you are finished with the analysis using R, but n
 
 Two options:
 
-Either install with Bioconductor installation script \verb@biocLite@ directly:
+Either install with BiocManager from Bioconductor:
 <<install, echo=TRUE, eval=FALSE>>=
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
