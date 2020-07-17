@@ -160,7 +160,7 @@ heatmap2 <- function(x, Rowv = TRUE, Colv = if (symm) "Rowv" else TRUE,
     }
     nbr <- length(breaks)
     ncol <- length(breaks) - 1
-    if (class(col) == "function") 
+    if (class(col)[1] == "function") 
         col <- col(ncol)
     else if (is.character(col) && length(col) == 1) 
         col <- do.call(col, list(ncol))

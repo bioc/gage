@@ -1,6 +1,6 @@
 gs.zTest <- function(exprs, gsets, set.size = c(10, 
     500), same.dir = TRUE, ...) {
-    if (class(gsets) != "list") 
+    if (class(gsets)[1] != "list") 
         stop("gsets need to be a list")
     
     s = apply(exprs, 2, sd, na.rm = TRUE)^2
@@ -14,7 +14,7 @@ gs.zTest <- function(exprs, gsets, set.size = c(10,
     p.results = ps.results = results
     mstat <- setsize
     for (i in 1:length(gsets)) {
-        if (class(gsets[[i]]) == "smc") {
+        if (class(gsets[[i]])[1] == "smc") {
             clids <- gsets[[i]]@ids
         }
         else {

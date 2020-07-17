@@ -4,7 +4,7 @@ essGene <- function(gs, exprs, ref = NULL, samp = NULL,
     if (is.null(gsets)) 
         a = gs
     else {
-        if (class(gsets[[gs]]) == "smc") 
+        if (class(gsets[[gs]])[1] == "smc") 
             a = gsets[[gs]]@ids
         else a = gsets[[gs]]
     }

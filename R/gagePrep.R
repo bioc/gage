@@ -1,7 +1,7 @@
 gagePrep <- function(exprs, ref = NULL, samp = NULL, 
     same.dir = TRUE, compare = "paired", rank.test = FALSE, use.fold = TRUE, 
     weights = NULL, full.table = FALSE, ...) {
-    if (class(exprs) == "data.frame") 
+    if (class(exprs)[1] == "data.frame") 
         exprs <- as.matrix(exprs)
     if (is.numeric(exprs)) {
         exprs <- cbind(exprs)

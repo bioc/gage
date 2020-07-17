@@ -31,7 +31,7 @@ kegg.gsets<-function(species="hsa", id.type="kegg", check.new=FALSE){
   if(!exists("khier")){
     if(check.new){
       si=try(load(url("https://pathview.uncc.edu/data/khier.rda")))
-      if(class(si)=="try-error") data(khier, package="gage")
+      if(class(si)[1]=="try-error") data(khier, package="gage")
     } else data(khier, package="gage")
   }
 
