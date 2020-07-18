@@ -1,3 +1,16 @@
+VERSION 2.39.3/2.38.3
+-------------
+  
+  o fixed warning on "library(GO.db)" in go.gsets.R. Now "import" from
+    GO.db, instead of "suggest" it. 
+
+VERSION 2.39.2/2.38.2
+-------------
+  
+  o fixed error caused by class(exprs) == "data.frame" in
+    gagePrep.R. class(exprs) now returns a vector of length 2, which
+    caused the error.
+
 VERSION 2.28.2
 -------------
   
