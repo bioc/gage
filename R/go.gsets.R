@@ -32,8 +32,9 @@ go.gsets <-  function (species = "human", pkg.name = NULL, id.type="eg", keep.ev
     message(gid.msg)
     bimap.go = eval(as.name(paste(pkg.name, "GO2ALL", id.type, "S", sep = "")))
     go= AnnotationDbi::as.list(bimap.go)
-    library(GO.db)
-    go.names=sapply(AnnotationDbi::mget(names(go), GOTERM), function(x) x@Term)
+    #library(GO.db)
+    #requireNamespace("GO.db", quiet=TRUE)
+    go.names=sapply(AnnotationDbi::mget(names(go), GO.db::GOTERM), function(x) x@Term)
     names(go)=paste(names(go), go.names)
     if(keep.evidence) go.sets=go else go.sets=lapply(go, function(x) unique(x))
     go.sets.len=sapply(go.sets, length)
@@ -44,7 +45,8 @@ go.gsets <-  function (species = "human", pkg.name = NULL, id.type="eg", keep.ev
     gotype=c('BP','CC','MF')
     go.subs=list()
     for(i in 1:3){
-      offsenv=eval(as.name(paste('GO',gotype[i],'OFFSPRING',sep='')))
+      #offsenv=eval(as.name(paste('GO.db::GO',gotype[i],'OFFSPRING',sep='')))
+      offsenv=eval(parse(text=paste('GO.db::GO',gotype[i],'OFFSPRING',sep='')))
       branches=AnnotationDbi::get(gts.mains[i], env=offsenv)
       go.subs[[i]]=which(gts %in% branches)
     }

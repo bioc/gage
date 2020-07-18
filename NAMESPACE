@@ -1,5 +1,6 @@
 
 importFrom(AnnotationDbi, as.list, get, mget)
+importFrom(GO.db, GOTERM, GOBPOFFSPRING, GOCCOFFSPRING, GOMFOFFSPRING)
 importClassesFrom(graph, graphNEL)
 importMethodsFrom(graph, connComp)
 import(KEGGREST)
